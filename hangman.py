@@ -17,6 +17,12 @@ def hangman():
  
     lives = len(word_letters) + 4
 
+    # get suggestions
+    user_letter = random.choice(word)
+    if user_letter in alphabet - used_letters: 
+            used_letters.add(user_letter)
+            if user_letter in word_letters:
+                word_letters.remove(user_letter)
     # getting user input
     while len(word_letters) > 0 and lives > 0:
         # letters used
@@ -28,7 +34,7 @@ def hangman():
         print('Current word: ', ' '.join(word_list))
 
         user_letter = input('\nGuess a letter: ').upper()
-        if user_letter in alphabet - used_letters:
+        if user_letter in alphabet - used_letters: 
             used_letters.add(user_letter)
             if user_letter in word_letters:
                 word_letters.remove(user_letter)
